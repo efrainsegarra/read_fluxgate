@@ -1,10 +1,10 @@
 #ifndef __CONSTANTS_H__
 #define __CONSTANTS_H__
 
+const double 	DEFAULT = -1e5;
+const int 	EXPECTEDSIZE = 1000;
 
-const double C1 =	(10./256);
-const double C2 =	(10./256/256);
-const double C3 =	(10./256/256/256);
-
+const int 	MAXCHANNEL = 7;
+const double 	SCALING[MAXCHANNEL+1] = { 2*5, 2*7, 7000, 7000, 7000, 7000, 7000, 7000 };
 
 #endif
