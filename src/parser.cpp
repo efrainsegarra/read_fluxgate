@@ -36,12 +36,9 @@ int main( int argc, char** argv ){
 	// 	
 	std::map<int,std::vector<double>> full_data;
 	int channel = 0;
-	for (double read = -1e5; file.read(reinterpret_cast<char*>(&read), sizeof(read)); ){
+	for (double read = DEFAULT; file.read(reinterpret_cast<char*>(&read), sizeof(read)); ){
 
-		// For some reason Georg has factors: 2*5 in front of channel 0, 
-		// 2*7 in front of channel 1, and 7000 in front of 2-7 ...
-		// ¯\_(ツ)_/¯
-		full_data[channel].push_back( SCALING[channel] * read );
+		if( read != DEFAULT) full_data[channel].push_back( SCALING[channel] * read );
 
 		// Reset after 8 channels read
 		if( channel == MAXCHANNEL ){
@@ -57,17 +54,15 @@ int main( int argc, char** argv ){
 	// per channel per angle per position:
 	//
 	Measure measure;
-	measure.Bx 	= average(full_data[2]);
-	measure.By 	= average(full_data[3]);
-	measure.Bz 	= average(full_data[4]);
+	measure.Bx 	= average(full_data[0]);
+	measure.By 	= average(full_data[1]);
+	measure.Bz 	= average(full_data[2]);
 
 
 
 	// TODO:
 	// - take sample measurement
 	// - check how individual samples look like -- gaussian, some weird shape, etc..
-	// - figure out scalings 
-	// - what were other channels used for in mathematica script
 	// - what is alignment of flux gate w/r global coords (it measures x,y,z but what is mapping to global x,y,z)
 	cout << measure.Bx << " " << measure.By << " " << measure.Bz << "\n";
 	
