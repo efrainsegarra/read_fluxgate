@@ -2,7 +2,7 @@
 #define __CONSTANTS_H__
 
 const double 	DEFAULT = -1e5;
-const int 	EXPECTEDSIZE = 1000;
+const int 	EXPECTEDSIZE = 10000;
 
 const int 	MAXCHANNEL = 7;
 const double 	SCALING[MAXCHANNEL+1] = { 1E3 * 1E4, 1E3 * 1E4, 1E3 * 1E4, 0., 0., 0., 0., 0. };
