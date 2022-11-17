@@ -78,7 +78,7 @@ int main( int argc, char** argv ){
 		grabMetaData( argv[fileno] , measure );
 
 		if( measure.status == false ) continue; // Skip OFF for now
-		if( measure.it > 0 ) continue; 		// Skip other iterations for now
+		//if( measure.it > 0 ) continue; 		// Skip other iterations for now
 
 		/////////////////////////////////////////////////
 		// File structure in binary:
@@ -115,6 +115,11 @@ int main( int argc, char** argv ){
 
 		cout 	<< measure.pos << " " << measure.ang << " " << measure.it << " " 
 			<< measure.Bx << " " << measure.By << " " << measure.Bz << "\n";
+
+		//cout << "file: " << argv[fileno] << "\n";
+		//for( int i = 0 ; i < full_data[1].size() ; ++i ){
+		//	cout << std::setprecision(15) << -1*full_data[1][i] << "\n";
+		//}
 	}
 	
 
